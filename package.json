@@ -1,0 +1,23 @@
+{
+  "name": "people-app",
+  "version": "1.0.0",
+  "description": "Demo for Spring Weekend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "myApp",
+  "license": "myApp",
+  "dependencies": {
+    "express": "*"
+  },
+  "engine": "node >=0.6.x",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "/"
+}

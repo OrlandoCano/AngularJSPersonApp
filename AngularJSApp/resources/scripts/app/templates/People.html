@@ -1,0 +1,62 @@
+<section ng-controller="PeopleController">
+	<div class="row">
+		<div class="col-lg-7">
+			<form role="form">
+			  <div class="form-group">
+			    <input name="id" type="hidden" class="form-control" ng-model="person.id">
+			  </div>
+			  <div class="form-group">
+			    <label for="lastName">First Name:</label>
+			    <input name="lastName" type="text" class="form-control" ng-model="person.lastName">
+			  </div>
+			  <div class="form-group">
+			    <label for="lastName">Last Name:</label>
+			    <input name="lastName" type="text" class="form-control" ng-model="person.lastName">
+				</div>
+				<div class="form-group">
+			    <label for="email">Last Name:</label>
+			    <input name="email" type="text" class="form-control" ng-model="person.email">
+				</div>
+				<div class="form-group">
+			    <label for="address">Last Name:</label>
+			    <input name="address" type="text" class="form-control" ng-model="person.address">
+				</div>
+				<div class="form-group">
+			    <label for="createdDate">Last Name:</label>
+			    <input name="createdDate" type="text" class="form-control" ng-model="person.createdDate">
+				</div>
+			  <button type="button" class="btn btn-success" ng-click="savePeople()">Guardar</button>
+			  <button type="button" class="btn btn-primary" ng-click="clear()">New</button>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-7">
+			<table class="table">
+				<thead>
+					<tr>
+						<td>
+							<a href="" ng-click="predicate = 'id'; reverse=!reverse">Id </a>  <span class="glyphicon glyphicon-sort" ng-show="predicate == 'id'"></span>
+						</td>
+						<td>
+							<a href="" ng-click="predicate = 'subjectName'; reverse=!reverse"> Nombre</a> <span class="glyphicon glyphicon-sort" ng-show="predicate == 'subjectName'"></span>
+						</td>
+						<td>
+							<a href="" ng-click="predicate = 'semester'; reverse=!reverse"> Semestre </a>  <span class="glyphicon glyphicon-sort" ng-show="predicate == 'semester'"></span>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="subject in materias | orderBy:predicate:reverse" ng-class="{active : $index % 2 != 0}">
+						<td>{{ subject.id }}</td>
+						<td>{{ subject.subjectName }}</td>
+						<td>{{ subject.semester }}</td>
+						<td>
+							<button type="button" class="glyphicon glyphicon-pencil btn btn-primary" ng-click="loadMateria(subject.id)">Editar</button>
+							<button type="button" class="glyphicon glyphicon-remove btn btn-danger" ng-click="deleteMateria(subject.id)">Eliminar</button>
+						</td>
+					</tr>
+		</table>
+		</div>
+	</div>
+</section>
