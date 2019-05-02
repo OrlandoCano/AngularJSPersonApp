@@ -2,16 +2,16 @@ app.controller("PeopleController", ['$scope', 'DataService',
                 function ($scope, DataService) {
 	var dialog = $('#infoModal');
 	var infoText = $('#infoText'); 
-	$scope.loadPeople = function(id){
+	$scope.loadPerson = function(id){
 		var onSuccess = function(data){
-			$scope.people = data;
+			$scope.person = data;
 		};
 		var onError = function(data, error){
 			console.error(data);
 			console.error(error);
 			
 		}
-		DataService.getPeople(id, onSuccess, onError);
+		DataService.getPerson(id, onSuccess, onError);
 	};
 	
 	var loadPeople = function(){
@@ -26,10 +26,10 @@ app.controller("PeopleController", ['$scope', 'DataService',
 		DataService.getPeople(onSuccess, onError);
 	};
 	
-	$scope.deletePeople = function(id){
+	$scope.deletePerson = function(id){
 		var onSuccess = function(data){
 			infoText.html("Person Deleted");
-			if($scope.people.id === id){
+			if($scope.person.id === id){
 				$scope.clear();
 			}
 			dialog.modal('show');
@@ -39,25 +39,29 @@ app.controller("PeopleController", ['$scope', 'DataService',
 			console.error(data);
 			console.error(error);
 		}
-		DataService.removePeople(id, onSuccess, onError);
+		DataService.removePerson(id, onSuccess, onError);
 	};
 	
-	$scope.savePeople = function(){
+	$scope.savePerson = function(){
 		var onSuccess = function(data){
 			console.info("Person added");
-			$scope.people = data;
+			$scope.person = data;
 			loadPeople();
 		};
 		var onError = function(data, error){
 			console.error(data);
 			console.error(error);
 		}
-		DataService.addPeople($scope.people, onSuccess, onError);
+		DataService.addPerson($scope.person, onSuccess, onError);
 	};
 	$scope.clear = function(){
-		$scope.people.id = null;
-		$scope.people.subjectName = null;
-		$scope.people.semester = null;
+		$scope.person.id = null;
+		$scope.person.firstName = null;
+		$scope.person.lastName = null;
+		$scope.person.email = null;
+		$scope.person.address = null;
+		$scope.person.createdDate = null;
+
 	}
 	var init = function (){
 		loadPeople();
