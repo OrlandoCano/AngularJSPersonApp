@@ -56,11 +56,10 @@ app.controller("PeopleController", ['$scope', 'DataService',
 	};
 	$scope.clear = function(){
 		$scope.person.id = null;
-		$scope.person.firstName = null;
-		$scope.person.lastName = null;
-		$scope.person.email = null;
-		$scope.person.address = null;
-		$scope.person.createdDate = null;
+		$scope.person.firstName = "";
+		$scope.person.lastName = "";
+		$scope.person.email = "";
+		$scope.person.address = "";
 
 	}
 	var init = function (){
